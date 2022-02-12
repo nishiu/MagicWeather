@@ -1,0 +1,142 @@
+<RelativeLayout
+    android:id="@+id/group_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_widget_style_1"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/group_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|left"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/qb_px_20"
+        android:layout_marginTop="@dimen/qb_px_10"
+        android:layout_marginBottom="@dimen/qb_px_20"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|bottom">
+
+            <TextClock
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="50sp"
+                android:textColor="#ffffff"
+                android:format24Hour="HH:mm"
+                android:format12Hour="hh:mm"/>
+
+            <TextView
+                android:id="@+id/tv_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="点我刷新"
+                android:padding="@dimen/qb_px_5"
+                android:layout_marginLeft="@dimen/qb_px_5"
+                android:textColor="#dfdfdf"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/qb_px_12"
+            android:text="北京市朝阳区"
+            android:layout_marginTop="@dimen/qb_px_3"
+            android:textColor="#ffffff"/>
+
+        <TextClock
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/qb_px_12"
+            android:format12Hour="MM月dd日 E"
+            android:format24Hour="MM月dd日 E"
+            android:layout_marginTop="@dimen/qb_px_3"
+            android:textColor="#ffffff"/>
+
+        <LinearLayout
+            android:id="@+id/label_15forecast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|left"
+            android:layout_marginTop="@dimen/qb_px_3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/qb_px_12"
+                android:text="查看40日天气预报"
+                android:textColor="#ffffff"/>
+
+            <ImageView
+                android:layout_width="@dimen/qb_px_5"
+                android:layout_height="@dimen/qb_px_10"
+                android:scaleType="fitXY"
+                android:rotation="180"
+                android:layout_marginLeft="@dimen/qb_px_10"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/group_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical|right"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/qb_px_20"
+        android:layout_marginBottom="-4dp"
+        android:layout_alignBottom="@+id/group_1">
+
+        <ImageView
+            android:id="@+id/icon_condition"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/qb_px_30"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:layout_marginBottom="@dimen/qb_px_15"/>
+
+        <TextView
+            android:id="@+id/tv_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/qb_px_12"
+            android:text="3°C"
+            android:layout_marginTop="@dimen/qb_px_3"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/tv_temp_min_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/qb_px_12"
+            android:text="4/-4°C"
+            android:layout_marginTop="@dimen/qb_px_3"
+            android:textColor="#ffffff"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|left"
+            android:layout_marginTop="@dimen/qb_px_3">
+
+            <TextView
+                android:id="@+id/tv_aqi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="空气质量良好 35"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/qb_px_12" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="base_line_color">#c6c6c6</color>
+    <color name="base_temp_color">#000000</color>
+    <color name="color_blue">#007cdb</color>
+    <color name="color_gray">#9a9a9a</color>
+    <color name="color_light_gray">#fafafa</color>
+    <color name="color_day">#FFE020</color>
+    <color name="color_night">#67B2FF</color>
+    <color name="color_orange">#FF6A3B</color>
+    <color name="lapis_blue">#0D2550</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="color_quality_1">#21CA49</color>
+    <color name="color_quality_2">#FEDD00</color>
+    <color name="color_quality_3">#FFA200</color>
+    <color name="color_quality_4">#FE1E1E</color>
+    <color name="color_quality_5">#A20050</color>
+    <color name="color_quality_6">#81022B</color>
+
+    <color name="color_temp_day">#FFB71E</color>
+    <color name="color_temp_night">#1E70FF</color>
+</resources>

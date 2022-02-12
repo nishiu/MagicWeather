@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">神奇天气查</string>
+    <string name="search_hint">输入城市名称或拼音</string>
+    <string name="location_city_lodding">获取位置中...</string>
+
+    <string-array name="chinese_week_string_array">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+</resources>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="@dimen/qb_px_293"
+        android:layout_height="@dimen/qb_px_350"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_white_5">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="隐私声明"
+            android:textSize="@dimen/qb_px_17"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginTop="@dimen/qb_px_17"
+            android:layout_centerHorizontal="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/title_text"
+            android:layout_above="@+id/bottom_group"
+            android:layout_margin="@dimen/qb_px_17"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/simple_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#666666"
+                android:lineSpacingExtra="@dimen/qb_px_4"
+                android:textSize="@dimen/qb_px_15"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/qb_px_17"
+            android:layout_marginRight="@dimen/qb_px_17"
+            android:layout_marginBottom="@dimen/qb_px_17"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/btn_not_agree"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/qb_px_40"
+                android:layout_marginRight="@dimen/qb_px_5"
+                android:layout_weight="1"
+                android:background="@drawable/bg_gray_rect_7"
+                android:gravity="center"
+                android:text="不同意"
+                android:textColor="#c9c9c9"
+                android:textSize="@dimen/qb_px_15"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_agree"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/qb_px_40"
+                android:layout_weight="1"
+                android:text="同意"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/qb_px_15"
+                android:gravity="center"
+                android:textStyle="bold"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:background="@drawable/bg_blue_7"
+                android:layout_marginLeft="@dimen/qb_px_5"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialKeyguardLayout="@layout/layout_blue_widget_big"
+    android:initialLayout="@layout/layout_blue_widget_big"
+    android:minWidth="250dp"
+    android:minHeight="110dp"
+    android:resizeMode="none"
+    android:updatePeriodMillis="1000"
+    android:widgetCategory="home_screen"/>
+
+<!--    android:previewImage="@drawable/bg_blue_widget_big_preview"-->
+<!--    android:configure="com.frostsowner.magic.weather.activity.WidgetConfigActivity"-->

@@ -1,0 +1,24 @@
+{
+  "cityid":"101010100",
+  "update_time":"2021-01-28 08:29:13",
+  "city":"北京",
+  "data":[
+      {
+          "date_nl":"十六",
+          "date":"2021-01-28",
+          "week":"星期四",
+          "wea":"晴",
+          "wea_c":"00",
+          "wea_img":"qing",
+          "wea_day":"晴",
+          "wea_day_img":"qing",
+          "wea_night":"晴",
+          "wea_night_img":"qing",
+          "tem1":"1",
+          "tem2":"-9",
+          "win":"西北风4-5级转微风",
+          "win_day":"西北风4-5级",
+          "win_night":"微风"
+      }
+  ]
+}

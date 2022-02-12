@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/c_p_header_hottitle_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/qb_px_5"
+        android:paddingLeft="@dimen/qb_px_16"
+        android:paddingRight="@dimen/qb_px_16"
+        android:paddingTop="@dimen/qb_px_10"
+        android:text="热门城市"
+        android:textColor="@color/black"
+        android:textSize="@dimen/qb_px_16"/>
+
+    <co.lujun.androidtagview.TagContainerLayout
+        android:id="@+id/hot_city_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/qb_px_16"
+        android:paddingRight="@dimen/qb_px_16"
+        android:paddingTop="@dimen/qb_px_10"
+        app:container_enable_drag="false"
+        app:horizontal_interval="@dimen/qb_px_10"
+        app:tag_clickable="true"
+        app:tag_enable_cross="false"
+        app:tag_background_color="#ffffff"
+        app:container_background_color="#ffffff"
+        app:container_border_color="#ffffff"
+        app:tag_border_color="@android:color/darker_gray"
+        app:tag_theme="none"
+        app:tag_vertical_padding="@dimen/qb_px_8"
+        app:tag_horizontal_padding="@dimen/qb_px_15"
+        app:tag_ripple_duration="400"
+        app:tag_text_color="#000000"
+        app:tag_text_size="@dimen/qb_px_15"
+        app:vertical_interval="@dimen/qb_px_15" />
+</LinearLayout>

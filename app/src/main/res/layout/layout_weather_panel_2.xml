@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_white_5"
+    android:padding="@dimen/qb_px_10">
+
+    <TextView
+        android:id="@+id/tv_temp_min_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="23/31"
+        android:textSize="@dimen/qb_px_22"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:textColor="#333333"/>
+
+    <TextView
+        android:id="@+id/tv_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="今天"
+        android:textSize="@dimen/qb_px_17"
+        android:gravity="center_horizontal|bottom"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textColor="#666666"/>
+
+    <TextView
+        android:id="@+id/tv_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1月2日"
+        android:textSize="@dimen/qb_px_11"
+        android:layout_marginTop="@dimen/qb_px_5"
+        android:layout_below="@+id/tv_week"
+        android:textColor="#CCCCCC"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/icon_weather"
+        android:layout_width="@dimen/qb_px_25"
+        android:layout_height="@dimen/qb_px_25"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/tv_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="多云"
+        android:textSize="@dimen/qb_px_17"
+        android:gravity="center"
+        android:textColor="#666666"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

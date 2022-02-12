@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="@dimen/qb_px_15"
+        android:layout_height="@dimen/qb_px_15"
+        android:indeterminateTint="#ffffff"
+        android:indeterminateTintMode="src_atop"/>
+
+    <TextView
+        android:id="@+id/tv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/qb_px_11"
+        android:textColor="#ffffff"
+        android:text="更新成功"
+        android:layout_marginLeft="@dimen/qb_px_10"/>
+</LinearLayout>

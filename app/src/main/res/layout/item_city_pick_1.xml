@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/item_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_city_pick_selector">
+
+    <TextView
+        android:id="@+id/c_item_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="香港特别行政区"
+        android:maxLines="1"
+        android:gravity="center"
+        android:paddingTop="@dimen/qb_px_6"
+        android:paddingBottom="@dimen/qb_px_6"
+        android:paddingLeft="@dimen/qb_px_12"
+        android:paddingRight="@dimen/qb_px_12"
+        android:textColor="@color/black"
+        android:textSize="@dimen/qb_px_14"/>
+</LinearLayout>

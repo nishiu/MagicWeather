@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/condition_root_view"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/label_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:gravity="center_horizontal|bottom">
+
+            <TextView
+                android:id="@+id/tv_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:gravity="bottom|center_horizontal"
+                android:textSize="@dimen/qb_px_110"
+                android:text="15°"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/btn_speak"
+                    android:layout_width="@dimen/qb_px_40"
+                    android:layout_height="@dimen/qb_px_40"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/qb_px_30"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/background_circle"/>
+
+                    <me.xfans.lib.voicewaveview.VoiceWaveView
+                        android:id="@+id/voiceWaveView0"
+                        android:layout_width="@dimen/qb_px_25"
+                        android:layout_height="@dimen/qb_px_20"
+                        app:lineColor="#ffffff"
+                        app:waveMode="up_down"
+                        app:lineType="bar_chart"
+                        android:visibility="invisible"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"/>
+
+                    <ImageView
+                        android:id="@+id/voice_close"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_voice"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="多云"
+                    android:textSize="@dimen/qb_px_24"
+                    android:layout_marginTop="@dimen/qb_px_10"
+                    android:layout_marginBottom="@dimen/qb_px_21"
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/group_bottom_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/qb_px_5"
+                android:background="@drawable/background_rect_17"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/qb_px_10"
+                android:paddingTop="@dimen/qb_px_5"
+                android:paddingRight="@dimen/qb_px_10"
+                android:paddingBottom="@dimen/qb_px_5">
+
+                <TextView
+                    android:id="@+id/tv_wind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="东北微风"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/qb_px_14" />
+
+                <TextView
+                    android:id="@+id/tv_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/qb_px_10"
+                    android:text="湿度33%"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/qb_px_14" />
+
+                <TextView
+                    android:id="@+id/tv_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/qb_px_10"
+                    android:text="气压999hPa"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/qb_px_14" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/qb_px_10"
+                    android:layout_marginTop="@dimen/qb_px_10"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/qb_px_13" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/group_aqi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="@dimen/qb_px_5"
+            android:paddingBottom="@dimen/qb_px_5"
+            android:paddingLeft="@dimen/qb_px_10"
+            android:paddingRight="@dimen/qb_px_10"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/qb_px_5"
+            android:layout_marginRight="@dimen/qb_px_12"
+            android:background="@drawable/background_rect_17">
+
+            <ImageView
+                android:id="@+id/img_aqi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_aqi"/>
+
+            <TextView
+                android:id="@+id/tv_aqi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="@dimen/qb_px_5"
+                android:textSize="@dimen/qb_px_14" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

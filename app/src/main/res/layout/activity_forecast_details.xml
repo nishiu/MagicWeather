@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/bg_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_bg_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/img_bg_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <RelativeLayout
+            android:id="@+id/title_group"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_60">
+
+            <LinearLayout
+                android:id="@+id/title_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                android:gravity="center"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:onClick="onBack"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/qb_px_6"
+                android:padding="@dimen/qb_px_10">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/qb_px_70"
+                android:layout_marginRight="@dimen/qb_px_20"
+                android:layout_centerInParent="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/img_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:id="@+id/tv_city_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/qb_px_17"
+                    android:textStyle="bold"
+                    android:text="北京市"
+                    android:singleLine="true"
+                    android:focusableInTouchMode="true"
+                    android:ellipsize="marquee"
+                    android:scrollHorizontally="true"
+                    android:focusable="true"
+                    android:marqueeRepeatLimit="1"
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qb_px_10"
+            android:layout_marginRight="@dimen/qb_px_10"
+            android:overScrollMode="never"
+            android:fadingEdge="none"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/forecast_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:overScrollMode="never"
+                        android:fadingEdge="none"
+                        android:nestedScrollingEnabled="false"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|bottom">
+
+                            <TextView
+                                android:id="@+id/tv_max_min_temp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="15°/6°"
+                                android:textColor="#ffffff"
+                                android:textSize="@dimen/qb_px_50"/>
+
+                            <TextView
+                                android:id="@+id/tv_condition"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="多云"
+                                android:textColor="#ffffff"
+                                android:layout_marginLeft="@dimen/qb_px_7"
+                                android:textSize="@dimen/qb_px_17"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/background_rect_white_2"
+                        android:gravity="center_horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/qb_px_90"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <include
+                                android:id="@+id/item_day_wind"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                layout="@layout/item_condition_details_index"/>
+
+                            <TextView
+                                android:layout_width="@dimen/qb_px_2"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bg_line_vertical"
+                                android:layerType="software"/>
+
+                            <include
+                                android:id="@+id/item_night_wind"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                layout="@layout/item_condition_details_index"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ad_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/qb_px_10"
+                    android:layout_marginBottom="@dimen/qb_px_10"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:id="@+id/native_ad_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/item_today_live_index"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/qb_px_5"
+                    layout="@layout/layout_today_live_index_panel"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</RelativeLayout>

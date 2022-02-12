@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.frostsowner.magic.weather">
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 需要支持后台或休眠后保存输出时，需添加的权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <application
+        android:name="com.frostsowner.magic.weather.AppApplication"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:icon="@drawable/ic_launcher"
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:ignore="GoogleAppIndexingWarning,LockedOrientationActivity">
+
+        <activity
+            android:name="com.frostsowner.magic.weather.activity.SplashActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.frostsowner.magic.weather.activity.HomeTabActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:theme="@style/StatusBarTheme"
+            android:configChanges="orientation|keyboardHidden"/>
+
+        <activity
+            android:name="com.frostsowner.magic.weather.activity.ConditionDetailsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/StatusBarTheme" />
+
+        <activity
+            android:name="com.frostsowner.magic.weather.activity.ForecastDetailsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/StatusBarTheme" />
+
+        <activity
+            android:name="com.frostsowner.magic.weather.activity.CityMgrActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/StatusBarTheme"/>
+
+        <activity
+            android:name="com.frostsowner.magic.weather.activity.CityPickActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/StatusBarTheme" />
+
+        <activity
+            android:name="com.frostsowner.magic.weather.activity.CityPickSecondActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/StatusBarTheme" />
+
+        <activity
+            android:name="com.frostsowner.magic.weather.activity.CityPickThirdActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/StatusBarTheme" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="T4Wds1PSYIx7aRTAKZlGmopSF4kq6Gbc"/>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="${UM_APPKEY}" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UM_CHANNEL}"/>
+
+        <receiver android:name="com.frostsowner.magic.weather.widget.BlueWidgetBig"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_ENABLED"/>
+                <action android:name="android.appwidget.action.APPWIDGET_DISABLED"/>
+                <!--                <action android:name="android.appwidget.action.APPWIDGET_DELETED" />-->
+                <!--                <action android:name="android.appwidget.action.APPWIDGET_RESTORED" />-->
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/blue_widget_big_info" />
+        </receiver>
+
+        <receiver android:name="com.frostsowner.magic.weather.widget.BlueWidgetSmall"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_ENABLED" />
+                <!--                <action android:name="android.appwidget.action.APPWIDGET_DISABLED" />-->
+                <action android:name="android.appwidget.action.APPWIDGET_DELETED" />
+                <!--                <action android:name="android.appwidget.action.APPWIDGET_RESTORED" />-->
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/blue_widget_small_info" />
+        </receiver>
+
+        <provider
+            android:name="com.frostsowner.magic.weather.widget.WeatherProvider"
+            android:authorities="com.frostsowner.magic.weather.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/custom_file_path" />
+        </provider> <!-- 声明SDK所需要的组件 -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <service
+            android:name="com.frostsowner.magic.weather.service.WeatherService"
+            android:exported="false" />
+        <service
+            android:name="com.frostsowner.magic.weather.service.NotificationHandleService"
+            android:exported="false" />
+        <service
+            android:name="com.frostsowner.magic.weather.service.WidgetHandleService"
+            android:exported="false" />
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+    </application>
+
+</manifest>

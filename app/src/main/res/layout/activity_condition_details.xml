@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/bg_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_bg_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/img_bg_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+        <com.github.matteobattilana.weather.WeatherView
+            android:id="@+id/weather_effect_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <RelativeLayout
+            android:id="@+id/title_group"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_60">
+
+            <LinearLayout
+                android:id="@+id/title_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                android:gravity="center"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:onClick="onBack"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/qb_px_6"
+                android:padding="@dimen/qb_px_10">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/img_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:id="@+id/tv_city_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/qb_px_17"
+                    android:textStyle="bold"
+                    android:text="北京市"
+                    android:maxLength="8"
+                    android:maxLines="1"
+                    android:layout_marginLeft="@dimen/qb_px_4"
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/btn_more"
+                android:layout_width="@dimen/qb_px_30"
+                android:layout_height="@dimen/qb_px_20"
+                android:orientation="vertical"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/qb_px_6"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:layout_width="@dimen/qb_px_5"
+                    android:layout_height="@dimen/qb_px_5"
+                    android:scaleType="fitXY"
+                    android:layout_alignParentTop="true"
+                    android:visibility="invisible"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/condition_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/qb_px_3"
+            android:scrollbars="none"
+            android:fadingEdge="none"
+            android:overScrollMode="never"/>
+
+    </LinearLayout>
+</RelativeLayout>

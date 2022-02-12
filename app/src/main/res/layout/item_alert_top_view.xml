@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="top|left">
+
+    <TextView
+        android:id="@+id/tv_alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="@dimen/qb_px_210"
+        android:padding="@dimen/qb_px_5"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="今日天气是xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        android:focusableInTouchMode="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:textSize="@dimen/qb_px_12"
+        android:layout_marginLeft="@dimen/qb_px_10"
+        android:layout_marginTop="@dimen/qb_px_25"
+        android:background="@drawable/background_rect_white_3"
+        android:textColor="#ffffff"/>
+</LinearLayout>

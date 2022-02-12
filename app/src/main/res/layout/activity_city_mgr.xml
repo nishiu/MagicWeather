@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_53">
+
+            <LinearLayout
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/qb_px_6"
+                android:onClick="onBack"
+                android:padding="@dimen/qb_px_10"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:layout_width="@dimen/qb_px_10"
+                    android:layout_height="@dimen/qb_px_18"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/ic_arrow_left"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/qb_px_17"
+                android:textStyle="bold"
+                android:text="城市管理"/>
+
+            <LinearLayout
+                android:id="@+id/btn_city_mgr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="@dimen/qb_px_10"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/qb_px_7">
+
+                <ImageView
+                    android:layout_width="@dimen/qb_px_16"
+                    android:layout_height="@dimen/qb_px_16"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/ic_edit"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/qb_px_10"
+                android:layout_marginRight="@dimen/qb_px_7"
+                android:visibility="invisible"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/ic_check"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_above="@+id/banner_container">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/city_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:fadingEdge="none"/>
+
+            <LinearLayout
+                android:id="@+id/btn_city_add"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_60"
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_city_add"
+                    android:scaleType="fitXY"
+                    android:layout_marginRight="@dimen/qb_px_7"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="添加城市"
+                    android:textSize="@dimen/qb_px_17"
+                    android:textColor="#1F76F3"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/banner_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</LinearLayout>
