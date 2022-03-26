@@ -152,80 +152,13 @@ public class CityWeatherAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
         if(adapterNotifyListener != null)adapterNotifyListener.onNotify();
     }
 
-    private void updateTwoDays(BaseViewHolder helper, MultiItemEntity item){
-        boolean force = forceUpdate.get(item.getItemType());
-        if(!force)return;
-        TwoDaysItem twoDaysItem = (TwoDaysItem)item;
-        View todayPanel = helper.getView(R.id.item_today_panel);
-        View tomorrowPanel = helper.getView(R.id.item_tomorrow_panel);
-        List<YunForecastItem> forecastData = twoDaysItem.getForecastItems();
-        YunForecastItem todayForecast = null;
-        YunForecastItem tomorrowForecast = null;
-        for(int i = 0; i < forecastData.size();i++){
-            YunForecastItem forecastItem = forecastData.get(i);
-            String todayTime = simpleDateManager.transformTime("yyyy-MM-dd");
-            String targetTime = forecastItem.getDate();
-            if(todayTime.equals(targetTime)){
-                todayForecast = forecastItem;
-                if(i+1 < forecastData.size())tomorrowForecast = forecastData.get(i+1);
-                break;
-            }
-        }
-        updateBottomWeather(todayPanel,"今天",todayForecast);
-        updateBottomWeather(tomorrowPanel,"明天",tomorrowForecast);
-        todayPanel.setOnClickListener(v -> activity.startActivity(new Intent(activity,ConditionDetailsActivity.class)));
-        final YunForecastItem finalTomorrowForecast = tomorrowForecast;
-        tomorrowPanel.setOnClickListener(v -> {
-            ActionEvent event = new ActionEvent(EventType.CHANGE_SECEN_FORECAST);
-            if(finalTomorrowForecast != null)event.setAttr("time",finalTomorrowForecast.getDate());
-            EventBus.getDefault().post(event);
-        });
-        forceUpdate.put(item.getItemType(),false);
-    }
-
-    private void updateBottomWeather(View root, String day, YunForecastItem baseForecast){
-        if(baseForecast == null){
-            root.setVisibility(View.INVISIBLE);
-            return;
-        }
-        root.setVisibility(View.VISIBLE);
-        TextView tvWeek = root.findViewById(R.id.tv_week);
-        TextView tvTempMinMax = root.findViewById(R.id.tv_temp_min_max);
-        ImageView iconWeather = root.findViewById(R.id.icon_weather);
-        tvWeek.setText(day);
-
-        TextView tvDay = root.findViewById(R.id.tv_day);
-        tvDay.setText(StringUtils.formatTransformStyle(baseForecast.getDate(),dateFormat,itemDayFormat));
-
-        tvTempMinMax.setText(baseForecast.getTem1()+"°/"+baseForecast.getTem2()+"°");
-        iconWeather.setImageResource(WeatherResUtils.getYunWeatherDayIcon(baseForecast.getWea_img()));
-
-        TextView tvWeather = root.findViewById(R.id.tv_weather);
-        tvWeather.setVisibility(View.VISIBLE);
-        tvWeather.setText(baseForecast.getWea());
-    }
-
     private void update24Hourly(BaseViewHolder helper, MultiItemEntity item){
         boolean force = forceUpdate.get(item.getItemType());
         if(!force)return;
         HourlyItem hourlyItem = (HourlyItem)item;
-        HorizontalScrollView hourlyListView = helper.getView(R.id.hourly_list_view);
-        hourlyListView.scrollTo(PixelUtils.dp2px(activity,20),0);
-//        hourlyView = root.findViewById(R.id.group_hourly);
-        if(Build.VERSION.SDK_INT >= 23){
-            hourlyListView.setOnScrollChangeListener(new View.OnScrollChangeListener(){
-                @Override
-                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                    if(hourlyListView.getScrollX() > 0 && !hourlySlip){
-                        hourlySlip = true;
-                        Log.e("ijimu","hourly slip : "+hourlyListView.getScrollX());
-                    }
-                }
-            });
-        }
+        View hourlyView = helper.getView(R.id.group_hourly);
         if(hourlyItem.getHours() != null && hourlyItem.getHours() != null){
-            hourlyListView.setVisibility(View.VISIBLE);
-            List<YunHours> baseHourlyList = hourlyItem.getHours();
+            hourlyView.setVisibility(View.VISIBLE);
             RecyclerView recyclerView = helper.getView(R.id.weather_hourly_recyclerview);
             WeatherHourlyAdapter adapter = hourlyAdapterArray.get(helper.getLayoutPosition());
 //            Log.d("ijimu","hourly update, isForceUpdate : "+forceUpdate);
@@ -241,116 +174,16 @@ public class CityWeatherAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
             adapter.setNewData(hourlyItem.getHours());
 //            Log.d("ijimu","forceUpdate hourly");
             forceUpdate.put(item.getItemType(),false);
-
-            LineChart lineChart = helper.getView(R.id.weather_hourly_chart_1);
-
-            if(baseHourlyList == null)return;
-            //chartviewdouble
-            int size = baseHourlyList.size();
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)lineChart.getLayoutParams();
-            int width = getItemWidth();
-            layoutParams.leftMargin = width/20;
-            layoutParams.rightMargin = width/20;
-            lineChart.setLayoutParams(layoutParams);
-
-            ArrayList<Entry> tempData = new ArrayList<>();
-            for(int i = 0; i < size;i++){
-                YunHours yunHours = baseHourlyList.get(i);
-                Entry entry = new Entry();
-                float tempY = StringUtils.isEmpty(yunHours.getTem())?-1000:Integer.parseInt(yunHours.getTem());
-                entry.setX(i);
-                entry.setY(tempY);
-                tempData.add(entry);
-            }
-            setLineChart(lineChart,tempData,Color.parseColor("#ffffff"),Color.parseColor("#1E70FF"), R.drawable.bg_blue_transform_vertical);
         }else{
-            hourlyListView.setVisibility(View.GONE);
-        }
-        TextView riseInfoTv = helper.getView(R.id.rise_info);
-        if(!StringUtils.isEmpty(hourlyItem.getSunrise())&&
-           !StringUtils.isEmpty(hourlyItem.getSunset())){StringBuffer buffer = new StringBuffer();
-            buffer.append("日出\t");
-            buffer.append(hourlyItem.getSunrise()+"/");
-            buffer.append("日落\t");
-            buffer.append(hourlyItem.getSunset());
-            riseInfoTv.setText(buffer.toString());
-            riseInfoTv.setVisibility(View.VISIBLE);
-        }else{
-            riseInfoTv.setVisibility(View.INVISIBLE);
+            hourlyView.setVisibility(View.GONE);
         }
         forceUpdate.put(item.getItemType(),false);
-    }
-
-    private void setLineChart(LineChart lineChart,ArrayList<Entry> data,int circleColor,int circleHoleColor,int filterDrawable){
-        lineChart.getLegend().setEnabled(false);
-        lineChart.setDrawBorders(false);
-        lineChart.setDrawGridBackground(false);
-        lineChart.setScaleEnabled(false);
-        lineChart.getXAxis().setDrawLabels(false);
-        lineChart.getXAxis().setDrawAxisLine(false);
-        lineChart.getXAxis().setDrawGridLines(false);
-        lineChart.getAxisLeft().setDrawLabels(false);
-        lineChart.getAxisLeft().setDrawGridLines(false);
-        lineChart.getAxisLeft().setDrawAxisLine(false);
-        lineChart.getAxisRight().setDrawGridLines(false);
-        lineChart.getAxisRight().setDrawLabels(false);
-        lineChart.getAxisRight().setDrawAxisLine(false);
-        lineChart.getXAxis().setGranularity(1f);
-        lineChart.getXAxis().setLabelCount(data.size(),true);
-        lineChart.setTouchEnabled(false);
-        lineChart.getDescription().setEnabled(false);
-        lineChart.getXAxis().setAvoidFirstLastClipping(true);
-
-        LineDataSet set1 = new LineDataSet(data,"");
-        set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        set1.setCircleColor(circleColor);
-        set1.setCircleHoleColor(circleHoleColor);
-        set1.setColor(circleHoleColor);
-        set1.setValueTextColor(circleHoleColor);
-        set1.setCircleRadius(4f);
-        set1.setCircleHoleRadius(3f);
-        set1.setDrawCircleHole(true);
-        set1.setDrawCircles(true);
-        set1.setLineWidth(2);
-        set1.setFormLineWidth(1f);
-        set1.setValueTextSize(15f);
-        set1.setDrawFilled(true);
-        set1.setValueFormatter(new ValueFormatter() {
-            @Override
-            public String getFormattedValue(float value){
-                return (int)value+"°";
-            }
-        });
-        Drawable drawable = ContextCompat.getDrawable(activity, filterDrawable);
-        set1.setFillDrawable(drawable);
-        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        dataSets.add(set1);
-        lineChart.setData(new LineData(dataSets));
-        lineChart.invalidate();
     }
 
     private void updateForecast(BaseViewHolder helper, MultiItemEntity item){
         boolean force = forceUpdate.get(item.getItemType());
         if(!force)return;
         ForecastItem forecastItem = (ForecastItem)item;
-        HorizontalScrollView forecastListView = helper.getView(R.id.forecast_list_view);
-        forecastListView.post(new Runnable() {
-            @Override
-            public void run() {
-                forecastListView.scrollTo(PixelUtils.dp2px(activity,20),0);
-            }
-        });
-        if(Build.VERSION.SDK_INT >= 23){
-            forecastListView.setOnScrollChangeListener(new View.OnScrollChangeListener(){
-                @Override
-                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                    if(forecastListView.getScrollX() > 0 && !forecastSlip){
-                        forecastSlip = true;
-                        Log.e("ijimu","forecast slip : "+forecastListView.getScrollX());
-                    }
-                }
-            });
-        }
         TextView btnMore = helper.getView(R.id.btn_more);
         btnMore.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -362,16 +195,15 @@ public class CityWeatherAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
             }
         });
         if(forecastItem.getForecastItems() != null && forecastItem.getForecastItems().size() > 0){
-            forecastListView.setVisibility(View.VISIBLE);
             List<YunForecastItem> forecastItems = forecastItem.getForecastItems();
-            forecastItems = forecastItems.subList(0,Math.min(forecastItems.size(),36));
+            forecastItems = forecastItems.subList(0,Math.min(forecastItems.size(),7));
             RecyclerView recyclerView = helper.getView(R.id.weather_week_recyclerview);
             WeatherWeekAdapter adapter = forecastAdapterArray.get(helper.getLayoutPosition());
             if(adapter == null){
                 adapter = new WeatherWeekAdapter(activity);
                 recyclerView.setAdapter(adapter);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
-                linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerView.setLayoutManager(linearLayoutManager);
                 adapter.setNewData(forecastItems);
                 forecastAdapterArray.put(helper.getLayoutPosition(),adapter);
@@ -379,29 +211,8 @@ public class CityWeatherAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
             adapter.setNewData(forecastItems);
 
             if(forecastItems == null)return;
-            int size = forecastItems.size();
-
-            LinearLayout groupWeatherChart = helper.getView(R.id.group_weather_chart);
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)groupWeatherChart.getLayoutParams();
-            int width = getItemWidth();
-            layoutParams.leftMargin = width/20;
-            layoutParams.rightMargin = width/20;
-            groupWeatherChart.setLayoutParams(layoutParams);
-
-            LineChart lineChartMax = helper.getView(R.id.weather_chart_max);
-            LineChart lineChartMin = helper.getView(R.id.weather_chart_min);
-
-            ArrayList<Entry> dayTempData = new ArrayList<>();
-            ArrayList<Entry> nightTempData = new ArrayList<>();
-            for(int i = 0; i < size;i++){
-                YunForecastItem baseForecast = forecastItems.get(i);
-                dayTempData.add(new Entry(i,StringUtils.isEmpty(baseForecast.getTem1())?0:Integer.parseInt(baseForecast.getTem1())));
-                nightTempData.add(new Entry(i,StringUtils.isEmpty(baseForecast.getTem2())?0:Integer.parseInt(baseForecast.getTem2())));
-            }
-            setLineChart(lineChartMax,dayTempData,Color.parseColor("#ffffff"),Color.parseColor("#FFB41E"), R.drawable.bg_orange_transform_vertical);
-            setLineChart(lineChartMin,nightTempData,Color.parseColor("#ffffff"),Color.parseColor("#1E70FF"), R.drawable.bg_blue_transform_vertical);
         }else{
-            forecastListView.setVisibility(View.GONE);
+
         }
         forceUpdate.put(item.getItemType(),false);
     }

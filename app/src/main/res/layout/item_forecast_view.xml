@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -14,80 +14,30 @@
             android:id="@+id/forecast_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="40日天气"
+            android:text="最近7日天气"
             android:textSize="@dimen/qb_px_18"
             android:layout_marginTop="@dimen/qb_px_10"
             android:layout_marginLeft="@dimen/qb_px_16"
             android:textStyle="bold"
             android:textColor="#333333"/>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/btn_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/qb_px_5"
             android:layout_alignParentRight="true"
-            android:orientation="horizontal"
-            android:gravity="center"
             android:padding="@dimen/qb_px_10"
-            android:layout_marginRight="@dimen/qb_px_5">
-
-            <TextView
-                android:id="@+id/btn_more"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="查看更多"
-                android:textSize="@dimen/qb_px_15"
-                android:textColor="#999999"/>
-
-            <ImageView
-                android:layout_width="@dimen/qb_px_7"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:tintMode="src_atop"
-                android:tint="#999999"
-                android:layout_marginLeft="@dimen/qb_px_2"/>
-        </LinearLayout>
+            android:text="查看40日天气"
+            android:gravity="center"
+            android:textSize="@dimen/qb_px_15"
+            android:textColor="#999999"/>
     </RelativeLayout>
 
-    <HorizontalScrollView
-        android:id="@+id/forecast_list_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/qb_px_5"
-        android:scrollbars="none"
-        android:fadingEdge="none"
-        android:overScrollMode="never"
-        android:layout_marginBottom="@dimen/qb_px_5">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/qb_px_360">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/weather_week_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-            <LinearLayout
-                android:id="@+id/group_weather_chart"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/qb_px_140"
-                android:layout_alignLeft="@+id/weather_week_recyclerview"
-                android:layout_alignRight="@+id/weather_week_recyclerview"
-                android:gravity="center"
-                android:layout_marginTop="@dimen/qb_px_140"
-                android:orientation="vertical">
-
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/weather_chart_max"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/qb_px_70"/>
-
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/weather_chart_min"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/qb_px_70"/>
-            </LinearLayout>
-        </RelativeLayout>
-    </HorizontalScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/weather_week_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="false"
+        android:scrollbars="none"/>
 </LinearLayout>

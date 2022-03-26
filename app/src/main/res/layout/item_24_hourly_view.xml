@@ -4,7 +4,6 @@
     android:id="@+id/group_hourly"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -21,45 +20,13 @@
             android:layout_marginTop="@dimen/qb_px_10"
             android:layout_marginLeft="@dimen/qb_px_20"
             android:textColor="#333333"/>
-
-        <TextView
-            android:id="@+id/rise_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/qb_px_16"
-            android:textColor="#999999"
-            android:layout_marginRight="@dimen/qb_px_16"
-            android:layout_marginTop="@dimen/qb_px_10"
-            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
-    <HorizontalScrollView
-        android:id="@+id/hourly_list_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/qb_px_5"
-        android:scrollbars="none"
-        android:fadingEdge="none"
-        android:overScrollMode="never"
-        android:layout_marginBottom="@dimen/qb_px_5">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/weather_hourly_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/qb_px_3"
+        android:layout_marginRight="@dimen/qb_px_3"
+        android:layout_height="match_parent"/>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/qb_px_280">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/weather_hourly_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/weather_hourly_chart_1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/qb_px_90"
-                android:layout_alignLeft="@+id/weather_hourly_recyclerview"
-                android:layout_alignRight="@+id/weather_hourly_recyclerview"
-                android:layout_marginTop="@dimen/qb_px_130"/>
-        </RelativeLayout>
-
-    </HorizontalScrollView>
 </LinearLayout>

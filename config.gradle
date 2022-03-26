@@ -1,0 +1,4 @@
+ext{
+    storefilepath = "/users/yulijun/documents/workspace/xs.keystore"
+    android_commom = "/users/yulijun/documents/workspace/android_common"
+}

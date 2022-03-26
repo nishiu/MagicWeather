@@ -370,7 +370,7 @@ public class CityWeatherFragment extends BaseFragment implements OnRefreshListen
         weatherSquareBg.setShapeType(WaveView.ShapeType.SQUARE);
         weatherSquareBg.setWaveColor(Color.parseColor("#00ffffff"),
                 Color.parseColor("#40ffffff"),
-                Color.parseColor("#ffffffff"));
+                Color.parseColor("#fff2f2f2"));
         WaveHelper waveHelper = new WaveHelper(weatherSquareBg);
         waveHelper.start();
     }
