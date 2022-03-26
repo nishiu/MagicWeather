@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +44,7 @@ public class WeatherWeekAdapter extends BaseQuickAdapter<YunForecastItem, BaseVi
         this.context = context;
         simpleDateManager = BeanFactory.getBean(SimpleDateManager.class);
         dateFormat = simpleDateManager.getFormatMap("yyyy-MM-dd");
-        itemDayFormat = simpleDateManager.getFormatMap("MM/dd");
+        itemDayFormat = simpleDateManager.getFormatMap("M月dd日");
         today = simpleDateManager.getDate();
     }
 
@@ -64,8 +65,6 @@ public class WeatherWeekAdapter extends BaseQuickAdapter<YunForecastItem, BaseVi
     protected void convert(BaseViewHolder helper, YunForecastItem baseForecast) {
         updateLayoutWidth(helper,baseForecast);
         updateWeekLayout(helper,baseForecast);
-        updateDayWeather(helper,baseForecast);
-        updateNightWeather(helper,baseForecast);
     }
 
     private void updateWeekLayout(BaseViewHolder helper, YunForecastItem forecastItem){
@@ -74,25 +73,15 @@ public class WeatherWeekAdapter extends BaseQuickAdapter<YunForecastItem, BaseVi
         }else{
             helper.setText(R.id.tv_week_name,StringUtils.getWeek(forecastItem.getDate(),dateFormat));
         }
-        helper.setAlpha(R.id.item_mask,helper.getLayoutPosition() < todayPosition?0.4f:1f);
         helper.setText(R.id.tv_date,StringUtils.formatTransformStyle(forecastItem.getDate(),dateFormat,itemDayFormat));
-    }
-
-    private void updateDayWeather(BaseViewHolder helper,YunForecastItem forecastItem){
-        helper.setBackgroundRes(R.id.icon_day_weather, WeatherResUtils.getYunWeatherDayIcon(forecastItem.getWea_day_img()));
-        helper.setText(R.id.tv_day_weather,forecastItem.getWea_day());
-    }
-
-    private void updateNightWeather(BaseViewHolder helper,YunForecastItem forecastItem){
-        helper.setBackgroundRes(R.id.icon_night_weather, WeatherResUtils.getYunWeatherNightIcon(forecastItem.getWea_night_img()));
-        helper.setText(R.id.tv_night_weather,forecastItem.getWea_night());
+        helper.setText(R.id.tv_temp_min_max,forecastItem.getTem1()+"°/"+forecastItem.getTem2()+"°");
     }
 
     private void updateLayoutWidth(BaseViewHolder helper,YunForecastItem forecastItem){
-        LinearLayout rootView = (LinearLayout)helper.itemView;
-        RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams)rootView.getLayoutParams();
-        layoutParams.width = getItemWidth();
-        rootView.setLayoutParams(layoutParams);
+        RelativeLayout rootView = (RelativeLayout)helper.itemView;
+//        RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams)rootView.getLayoutParams();
+//        layoutParams.width = getItemWidth();
+//        rootView.setLayoutParams(layoutParams);
         rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -24,6 +24,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.AttributeSet;
@@ -75,6 +76,7 @@ public class WaveView extends View {
     // paint to draw border
     private Paint mBorderPaint;
     private Paint mBackgroundPaint;
+    private PaintFlagsDrawFilter paintFlagsDrawFilter;
 
     private float mDefaultAmplitude;
     private float mDefaultWaterLevel;
@@ -111,8 +113,13 @@ public class WaveView extends View {
         mShaderMatrix = new Matrix();
         mViewPaint = new Paint();
         mViewPaint.setAntiAlias(true);
+        mViewPaint.setFilterBitmap(true);
+        mViewPaint.setDither(true);
         mBackgroundPaint = new Paint();
         mBackgroundPaint.setAntiAlias(true);
+        mBackgroundPaint.setFilterBitmap(true);
+        mBackgroundPaint.setDither(true);
+        paintFlagsDrawFilter = new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);
         rectF = new RectF();
     }
 
@@ -260,7 +267,9 @@ public class WaveView extends View {
         Paint wavePaint = new Paint();
         wavePaint.setStrokeWidth(2);
         wavePaint.setAntiAlias(true);
-
+        wavePaint.setDither(true);
+        wavePaint.setFilterBitmap(true);
+        canvas.setDrawFilter(paintFlagsDrawFilter);
         canvas.drawColor(mBackgroudColor);
         // Draw default waves into the bitmap
         // y=Asin(ωx+φ)+h
@@ -292,6 +301,7 @@ public class WaveView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         // modify paint shader according to mShowWave state
+        canvas.setDrawFilter(paintFlagsDrawFilter);
         if (mShowWave && mWaveShader != null) {
             // first call after mShowWave, assign it to our paint
             if (mViewPaint.getShader() == null) {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
@@ -68,7 +69,7 @@ public class WeatherHourlyAdapter extends BaseQuickAdapter<YunHours, BaseViewHol
     }
 
     private void updateLayoutWidth(BaseViewHolder helper){
-        RelativeLayout rootView = (RelativeLayout)helper.itemView;
+        LinearLayout rootView = (LinearLayout)helper.itemView;
         RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams)rootView.getLayoutParams();
         layoutParams.width = getItemWidth();
         rootView.setLayoutParams(layoutParams);
@@ -93,7 +94,7 @@ public class WeatherHourlyAdapter extends BaseQuickAdapter<YunHours, BaseViewHol
 
     private int getItemWidth(){
         int screenW = getWidthHeight()[0]- PixelUtils.dip2px(context,20);
-        return (int)(screenW/5f);
+        return (int)(screenW/4f);
     }
 
     private int[] getWidthHeight(){
