@@ -1,0 +1,6 @@
+ext{
+
+    modelPath = "F:/AndroidWorkspace/android_common"
+    storeFile = "F:/AndroidWorkspace/xs.keystore"
+    versionName = "1.0"
+}
