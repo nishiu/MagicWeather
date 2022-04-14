@@ -19,7 +19,6 @@
         android:layout_width="@dimen/qb_px_30"
         android:layout_height="@dimen/qb_px_30"
         android:scaleType="fitXY"
-        android:src="@drawable/w0"
         android:adjustViewBounds="true"/>
 
     <TextView

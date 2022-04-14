@@ -74,7 +74,10 @@ public class WeatherWeekAdapter extends BaseQuickAdapter<YunForecastItem, BaseVi
             helper.setText(R.id.tv_week_name,StringUtils.getWeek(forecastItem.getDate(),dateFormat));
         }
         helper.setText(R.id.tv_date,StringUtils.formatTransformStyle(forecastItem.getDate(),dateFormat,itemDayFormat));
-        helper.setText(R.id.tv_temp_min_max,forecastItem.getTem1()+"°/"+forecastItem.getTem2()+"°");
+        helper.setText(R.id.tv_temp_min_max,forecastItem.getTem1()+"°~"+forecastItem.getTem2()+"°");
+        helper.setBackgroundRes(R.id.icon_day_weather,WeatherResUtils.getYunWeatherDayIcon(forecastItem.getWea_day_img()));
+        helper.setBackgroundRes(R.id.icon_night_weather,WeatherResUtils.getYunWeatherNightIcon(forecastItem.getWea_night_img()));
+        helper.setText(R.id.tv_win,forecastItem.getWin());
     }
 
     private void updateLayoutWidth(BaseViewHolder helper,YunForecastItem forecastItem){

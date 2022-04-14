@@ -1,5 +1,5 @@
 include ':android_common'
-project(':android_common').projectDir = new File('/users/yulijun/documents/workspace/android_common')
+project(':android_common').projectDir = new File('F:/AndroidWorkspace/android_common')
 include ':android_common:commons'
 include ':android_common:bugfix'
 rootProject.name = "MagicWeather"

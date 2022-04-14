@@ -96,8 +96,8 @@ public class BaseWeatherService extends BaseService {
             notification.flags |= Notification.FLAG_NO_CLEAR;
             notification.flags |= Notification.FLAG_ONGOING_EVENT;
             notification.defaults = Notification.DEFAULT_SOUND; //设置为默认的声音
-            nm.notify(140412,notification);
-            startForeground(140412,notification);
+            nm.notify(358717,notification);
+            startForeground(358717,notification);
             logInfo("add notification view");
         }
     }

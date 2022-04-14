@@ -223,7 +223,7 @@ public class CityWeatherAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
         AqiItem aqiItem = (AqiItem)item;
         LinearLayout aqiParent = helper.getView(R.id.item_root);
         WaveView waveView = helper.getView(R.id.aqi_capsule);
-        waveView.setShapeType(WaveView.ShapeType.SQUARE);
+        waveView.setShapeType(WaveView.ShapeType.CIRCLE);
         if(aqiItem.getYunAqi() != null){
             aqiParent.setVisibility(View.VISIBLE);
             YunAqi baseAqi = aqiItem.getYunAqi();
@@ -231,51 +231,46 @@ public class CityWeatherAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
             helper.setText(R.id.tv_aqi_capsule_value,baseAqi.getAir());
             helper.setText(R.id.tv_aqi_capsule_quality,quality);
             helper.setVisible(R.id.btn_more,true);
+            helper.setText(R.id.tv_aqi_content,baseAqi.getAir_tips());
             if(quality.equals("优")){
                 waveView.setWaveColor(Color.parseColor("#2021CA49"),
                         Color.parseColor("#4021CA49"),
                         Color.parseColor("#8021CA49"));
-                helper.setTextColor(R.id.tv_aqi_capsule_name,activity.getResources().getColor(R.color.color_quality_1));
             }
             else if(quality.equals("良")){
                 waveView.setWaveColor(Color.parseColor("#20FEDD00"),
                         Color.parseColor("#40FEDD00"),
                         Color.parseColor("#80FEDD00"));
-                helper.setTextColor(R.id.tv_aqi_capsule_name,activity.getResources().getColor(R.color.color_quality_2));
             }
             else if(quality.equals("轻度")){
                 waveView.setWaveColor(Color.parseColor("#20FFA200"),
                         Color.parseColor("#40FFA200"),
                         Color.parseColor("#80FFA200"));
-                helper.setTextColor(R.id.tv_aqi_capsule_name,activity.getResources().getColor(R.color.color_quality_3));
             }
             else if(quality.equals("中度")){
                 waveView.setWaveColor(Color.parseColor("#20FE1E1E"),
                         Color.parseColor("#40FE1E1E"),
                         Color.parseColor("#80FE1E1E"));
-                helper.setTextColor(R.id.tv_aqi_capsule_name,activity.getResources().getColor(R.color.color_quality_4));
             }
             else if(quality.equals("重度")){
                 waveView.setWaveColor(Color.parseColor("#20A20050"),
                         Color.parseColor("#40A20050"),
                         Color.parseColor("#80A20050"));
-                helper.setTextColor(R.id.tv_aqi_capsule_name,activity.getResources().getColor(R.color.color_quality_5));
             }
             else if(quality.equals("严重")){
                 waveView.setWaveColor(Color.parseColor("#2081022B"),
                         Color.parseColor("#4081022B"),
                         Color.parseColor("#8081022B"));
-                helper.setTextColor(R.id.tv_aqi_capsule_name,activity.getResources().getColor(R.color.color_quality_6));
             }
-            WaveHelper waveHelper = new WaveHelper(waveView);
+            WaveHelper waveHelper = new WaveHelper(waveView,WaveHelper.AQI);
             waveHelper.start();
 
-            setAqiItem(helper.getView(R.id.item_pm25),"PM2.5(细颗粒物)",baseAqi.getPm25());
-            setAqiItem(helper.getView(R.id.item_pm10),"PM10(可吸入颗粒物)",baseAqi.getPm10());
-            setAqiItem(helper.getView(R.id.item_no2),"NO2(二氧化氮)",baseAqi.getNo2());
-            setAqiItem(helper.getView(R.id.item_so2),"S02(二氧化硫)",baseAqi.getSo2());
-            setAqiItem(helper.getView(R.id.item_co),"CO(一氧化碳)",baseAqi.getCo());
-            setAqiItem(helper.getView(R.id.item_o3),"O3(臭氧指数)",baseAqi.getO3());
+            setAqiItem(helper.getView(R.id.item_pm25),"PM2.5",baseAqi.getPm25(),baseAqi.getAir_level());
+            setAqiItem(helper.getView(R.id.item_pm10),"可吸入颗粒物",baseAqi.getPm10(),baseAqi.getAir_level());
+            setAqiItem(helper.getView(R.id.item_no2),"二氧化氮",baseAqi.getNo2(),baseAqi.getAir_level());
+            setAqiItem(helper.getView(R.id.item_so2),"二氧化硫",baseAqi.getSo2(),baseAqi.getAir_level());
+            setAqiItem(helper.getView(R.id.item_co),"一氧化碳",baseAqi.getCo(),baseAqi.getAir_level());
+            setAqiItem(helper.getView(R.id.item_o3),"臭氧指数",baseAqi.getO3(),baseAqi.getAir_level());
 
 //            aqiParent.setOnClickListener(new View.OnClickListener(){
 //                @Override
@@ -295,21 +290,43 @@ public class CityWeatherAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
             helper.setText(R.id.tv_aqi_capsule_value,"0");
             helper.setText(R.id.tv_aqi_capsule_quality,"无");
             helper.setTextColor(R.id.tv_aqi_capsule_name,Color.parseColor("#ffffff"));
-            setAqiItem(helper.getView(R.id.item_pm25),"PM2.5(细颗粒物)","--");
-            setAqiItem(helper.getView(R.id.item_pm10),"PM10(可吸入颗粒物)","--");
-            setAqiItem(helper.getView(R.id.item_no2),"NO2(二氧化氮)","--");
-            setAqiItem(helper.getView(R.id.item_so2),"S02(二氧化硫)","--");
-            setAqiItem(helper.getView(R.id.item_co),"CO(一氧化碳)","--");
-            setAqiItem(helper.getView(R.id.item_o3),"O3(臭氧指数)","--");
+            setAqiItem(helper.getView(R.id.item_pm25),"PM2.5","--","");
+            setAqiItem(helper.getView(R.id.item_pm10),"可吸入颗粒物","--","");
+            setAqiItem(helper.getView(R.id.item_no2),"二氧化氮","--","");
+            setAqiItem(helper.getView(R.id.item_so2),"二氧化硫","--","");
+            setAqiItem(helper.getView(R.id.item_co),"一氧化碳","--","");
+            setAqiItem(helper.getView(R.id.item_o3),"臭氧指数","--","");
         }
         forceUpdate.put(item.getItemType(),false);
     }
 
-    private void setAqiItem(View itemView,String name,String value){
+    private void setAqiItem(View itemView,String name,String value,String level){
         TextView tvName = itemView.findViewById(R.id.item_name);
         tvName.setText(name);
         TextView tvValue = itemView.findViewById(R.id.item_value);
         tvValue.setText(value);
+        View bg = itemView.findViewById(R.id.item_level_color);
+        if(StringUtils.isEmpty(level)){
+            bg.setBackgroundColor(Color.parseColor("#9a9a9a"));
+        }
+        if(level.equals("优")){
+            bg.setBackgroundColor(Color.parseColor("#21CA49"));
+        }
+        else if(level.equals("良")){
+            bg.setBackgroundColor(Color.parseColor("#FEDD00"));
+        }
+        else if(level.equals("轻度")){
+            bg.setBackgroundColor(Color.parseColor("#FFA200"));
+        }
+        else if(level.equals("中度")){
+            bg.setBackgroundColor(Color.parseColor("#FE1E1E"));
+        }
+        else if(level.equals("重度")){
+            bg.setBackgroundColor(Color.parseColor("#A20050"));
+        }
+        else if(level.equals("严重")){
+            bg.setBackgroundColor(Color.parseColor("#81022B"));
+        }
     }
 
     private void updateLiveIndex(BaseViewHolder helper,MultiItemEntity item){

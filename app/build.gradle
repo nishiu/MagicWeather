@@ -6,7 +6,7 @@ android {
         shl {
             keyAlias 'xs'
             keyPassword 'xs2021'
-            storeFile file('/users/yulijun/documents/workspace/xs.keystore')
+            storeFile file('F:/AndroidWorkspace/xs.keystore')
             storePassword 'xs2021'
         }
     }

@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,7 +12,6 @@
         android:textSize="@dimen/qb_px_18"
         android:textStyle="bold"
         android:layout_marginTop="@dimen/qb_px_10"
-        android:layout_marginBottom="@dimen/qb_px_10"
         android:layout_marginLeft="@dimen/qb_px_16"
         android:textColor="#333333"/>
 
@@ -21,6 +19,8 @@
         android:id="@+id/live_index_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_17"
+        android:layout_margin="@dimen/qb_px_10"
         android:scrollbars="none"
         android:fadingEdge="none"
         android:overScrollMode="never"/>

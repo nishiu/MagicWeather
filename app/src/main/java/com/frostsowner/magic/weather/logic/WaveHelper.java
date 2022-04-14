@@ -8,20 +8,33 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
 import com.frostsowner.magic.weather.view.WaveView;
+import com.umeng.commonsdk.debug.W;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WaveHelper {
-    private WaveView mWaveView;
 
+    public static final int AQI = 1001;
+    public static final int WEATHER_BACKGROUND = 1002;
+
+    private WaveView mWaveView;
     private AnimatorSet mAnimatorSet;
 
-    private int type;
-
     public WaveHelper(WaveView waveView) {
+        this(waveView,WEATHER_BACKGROUND);
+    }
+
+    public WaveHelper(WaveView waveView,int type){
         mWaveView = waveView;
-        initAnimation();
+        switch (type){
+            case AQI:
+                initAqiAnimation();
+                break;
+            default:
+                initBackgroundAnimation();
+                break;
+        }
     }
 
     public void start() {
@@ -31,7 +44,42 @@ public class WaveHelper {
         }
     }
 
-    private void initAnimation() {
+    private void initAqiAnimation() {
+        List<Animator> animators = new ArrayList<>();
+
+        // horizontal animation.
+        // wave waves infinitely.
+        ObjectAnimator waveShiftAnim = ObjectAnimator.ofFloat(
+                mWaveView, "waveShiftRatio", 0f, 1f);
+//        waveShiftAnim.setRepeatCount(1);
+//        waveShiftAnim.setRepeatMode(ValueAnimator.REVERSE);
+        waveShiftAnim.setDuration(10500);
+        waveShiftAnim.setInterpolator(new LinearInterpolator());
+        animators.add(waveShiftAnim);
+
+        // vertical animation.
+        // water level increases from 0 to center of WaveView
+        ObjectAnimator waterLevelAnim = ObjectAnimator.ofFloat(
+                mWaveView, "waterLevelRatio", 0f, 0.6f);
+        waterLevelAnim.setDuration(5000);
+//        waterLevelAnim.setRepeatCount(1);
+        waterLevelAnim.setInterpolator(new DecelerateInterpolator());
+        animators.add(waterLevelAnim);
+
+        // amplitude animation.
+        // wave grows big then grows small, repeatedly
+        ObjectAnimator amplitudeAnim = ObjectAnimator.ofFloat(
+                mWaveView, "amplitudeRatio", 0.0001f, 0.05f);
+//        amplitudeAnim.setRepeatCount(1);
+        amplitudeAnim.setDuration(5000);
+        amplitudeAnim.setInterpolator(new LinearInterpolator());
+        animators.add(amplitudeAnim);
+
+        mAnimatorSet = new AnimatorSet();
+        mAnimatorSet.playTogether(animators);
+    }
+
+    private void initBackgroundAnimation() {
         List<Animator> animators = new ArrayList<>();
         // horizontal animation.
         // wave waves infinitely.

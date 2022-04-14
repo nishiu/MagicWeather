@@ -6,23 +6,23 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:paddingTop="@dimen/qb_px_10"
-    android:paddingLeft="@dimen/qb_px_15"
+    android:paddingLeft="@dimen/qb_px_10"
     android:paddingBottom="@dimen/qb_px_10"
-    android:paddingRight="@dimen/qb_px_15">
+    android:paddingRight="@dimen/qb_px_10">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/qb_px_5">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="空气指数"
             android:textColor="#333333"
-            android:textStyle="bold"
-            android:textSize="@dimen/qb_px_18"/>
+            android:textSize="@dimen/qb_px_18"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/btn_more"
@@ -51,111 +51,151 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/qb_px_30"
-            android:layout_marginBottom="@dimen/qb_px_17"
-            android:layout_marginLeft="@dimen/qb_px_25">
-
-            <com.frostsowner.magic.weather.view.WaveView
-                android:id="@+id/aqi_capsule"
-                android:layout_width="@dimen/qb_px_80"
-                android:layout_height="@dimen/qb_px_160"
-                app:waveShape="capsule" />
-
-            <TextView
-                android:id="@+id/tv_aqi_capsule_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="空气质量"
-                android:textColor="#FF0FCE9E"
-                android:layout_marginTop="@dimen/qb_px_22"
-                android:textSize="@dimen/qb_px_12"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"/>
-
-            <TextView
-                android:id="@+id/tv_aqi_capsule_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="64"
-                android:textColor="#ffffff"
-                android:layout_marginTop="@dimen/qb_px_60"
-                android:textSize="@dimen/qb_px_24"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"/>
-
-            <TextView
-                android:id="@+id/tv_aqi_capsule_quality"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="优"
-                android:textColor="#ffffff"
-                android:layout_marginTop="@dimen/qb_px_111"
-                android:textSize="@dimen/qb_px_12"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"/>
-
-        </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_white_17"
+        android:layout_marginTop="@dimen/qb_px_5"
+        android:gravity="center_vertical">
 
         <LinearLayout
-            android:layout_width="@dimen/qb_px_150"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/qb_px_20"
-            android:layout_marginBottom="@dimen/qb_px_15"
-            android:layout_marginTop="@dimen/qb_px_18"
-            android:layout_alignParentRight="true">
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/qb_px_20"
+            android:layout_marginLeft="@dimen/qb_px_10"
+            android:layout_marginRight="@dimen/qb_px_10"
+            android:gravity="center">
 
-            <include
-                android:id="@+id/item_pm25"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/item_aqi_index"/>
+            <RelativeLayout
+                android:layout_width="@dimen/qb_px_90"
+                android:layout_height="@dimen/qb_px_90"
+                android:layout_marginLeft="@dimen/qb_px_10">
 
-            <include
-                android:id="@+id/item_pm10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/qb_px_12"
-                layout="@layout/item_aqi_index"/>
+                <com.frostsowner.magic.weather.view.WaveView
+                    android:id="@+id/aqi_capsule"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:waveShape="circle" />
 
-            <include
-                android:id="@+id/item_no2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/qb_px_12"
-                layout="@layout/item_aqi_index"/>
+                <TextView
+                    android:id="@+id/tv_aqi_capsule_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/qb_px_15"
+                    android:text="64"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/qb_px_24"
+                    android:textStyle="bold" />
 
-            <include
-                android:id="@+id/item_so2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/qb_px_12"
-                layout="@layout/item_aqi_index"/>
+                <TextView
+                    android:id="@+id/tv_aqi_capsule_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/qb_px_50"
+                    android:text="空气质量"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/qb_px_12"
+                    android:textStyle="bold" />
 
-            <include
-                android:id="@+id/item_co"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/qb_px_12"
-                layout="@layout/item_aqi_index"/>
+            </RelativeLayout>
 
-            <include
-                android:id="@+id/item_o3"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/qb_px_12"
-                layout="@layout/item_aqi_index"/>
+                android:layout_marginLeft="@dimen/qb_px_10"
+                android:layout_marginRight="@dimen/qb_px_10"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_aqi_capsule_quality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="优"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/qb_px_18"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_aqi_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF999999"
+                    android:textSize="@dimen/qb_px_12"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/qb_px_10"/>
+            </LinearLayout>
         </LinearLayout>
 
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/qb_px_18"
+            android:layout_marginBottom="@dimen/qb_px_15"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <include
+                    android:id="@+id/item_pm25"
+                    layout="@layout/item_aqi_index"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/item_pm10"
+                    layout="@layout/item_aqi_index"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+                <include
+                    android:id="@+id/item_no2"
+                    layout="@layout/item_aqi_index"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/qb_px_5"
+                android:gravity="center">
+                <include
+                    android:id="@+id/item_so2"
+                    layout="@layout/item_aqi_index"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+                <include
+                    android:id="@+id/item_co"
+                    layout="@layout/item_aqi_index"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+                <include
+                    android:id="@+id/item_o3"
+                    layout="@layout/item_aqi_index"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

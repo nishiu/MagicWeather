@@ -24,12 +24,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY" />
 
         <com.github.matteobattilana.weather.WeatherView
             android:id="@+id/weather_effect_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
@@ -55,33 +55,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical"/>
+                android:orientation="vertical" />
 
             <LinearLayout
                 android:id="@+id/btn_city_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/qb_px_6"
+                android:gravity="center"
+                android:orientation="vertical"
                 android:padding="@dimen/qb_px_10">
 
                 <ImageView
                     android:layout_width="@dimen/qb_px_16"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"/>
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY" />
             </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/title_city"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/btn_city_add"
                 android:layout_marginLeft="@dimen/qb_px_10"
                 android:layout_marginRight="@dimen/qb_px_10"
+                android:layout_toRightOf="@+id/btn_city_add"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -89,23 +89,23 @@
                     android:id="@+id/group_city_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_centerVertical="true"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tv_city_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/qb_px_17"
-                        android:textStyle="bold"
-                        android:singleLine="true"
-                        android:focusableInTouchMode="true"
                         android:ellipsize="marquee"
-                        android:scrollHorizontally="true"
                         android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:marqueeRepeatLimit="1"
-                        android:textColor="#ffffff"/>
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/qb_px_17"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <RelativeLayout
@@ -113,138 +113,54 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true">
 
-                    <LinearLayout
+                    <TextView
                         android:id="@+id/label_location_alert"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:visibility="invisible"
-                        android:layout_marginBottom="@dimen/qb_px_3"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:layout_width="@dimen/qb_px_10"
-                            android:layout_height="@dimen/qb_px_10"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:layout_marginTop="@dimen/qb_px_3"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/qb_px_11"
-                            android:textStyle="bold"
-                            android:maxLines="1"
-                            android:text="未成功获取定位,点击开启"
-                            android:layout_marginTop="@dimen/qb_px_2"
-                            android:layout_marginLeft="@dimen/qb_px_2"
-                            android:textColor="#FF9100"/>
-                    </LinearLayout>
+                        android:layout_marginLeft="@dimen/qb_px_2"
+                        android:layout_marginTop="@dimen/qb_px_2"
+                        android:maxLines="1"
+                        android:text="开启位置服务,获取本地天气"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/qb_px_11"
+                        android:textStyle="bold" />
 
                     <include
                         android:id="@+id/group_refresh"
+                        layout="@layout/layout_custom_refresh_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="invisible"
                         android:layout_marginTop="@dimen/qb_px_2"
-                        layout="@layout/layout_custom_refresh_header"/>
+                        android:visibility="invisible" />
                 </RelativeLayout>
 
-            </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/group_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/qb_px_52"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_location"
+                        android:visibility="invisible"
+                        android:layout_marginRight="@dimen/qb_px_4"
+                        android:scaleType="fitXY"/>
+
+                    <LinearLayout
+                        android:id="@+id/city_page_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+            </LinearLayout>
         </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/group_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginLeft="@dimen/qb_px_52"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/img_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_location"
-                android:visibility="invisible"
-                android:layout_marginRight="@dimen/qb_px_4"
-                android:scaleType="fitXY"/>
-
-            <LinearLayout
-                android:id="@+id/city_page_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center_vertical"/>
-        </LinearLayout>
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/news_group"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/qb_px_75"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        android:layout_below="@+id/status_bar">
-
-        <LinearLayout
-            android:id="@+id/btn_back_weather"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/qb_px_16"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:background="@drawable/ic_arrow_left"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="返回"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:layout_marginLeft="@dimen/qb_px_10"
-                android:textSize="@dimen/qb_px_17"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/qb_px_17"
-            android:textStyle="bold"
-            android:maxLines="1"
-            android:maxLength="6"
-            android:text="新闻资讯"
-            android:layout_centerInParent="true"
-            android:textColor="#ffffff"/>
-
-        <LinearLayout
-            android:id="@+id/btn_news_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="@dimen/qb_px_10"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/qb_px_7">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="添加频道"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="@dimen/qb_px_14"/>
-        </LinearLayout>
-
-    </RelativeLayout>
 
     <com.frostsowner.magic.weather.view.NoSwipeViewPager
         android:id="@+id/city_weather_pager"

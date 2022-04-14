@@ -49,10 +49,8 @@ public class WeatherFragment extends BgFragment {
     LinearLayout titleBg;
     @BindView(R.id.title_group)
     View titleGroup;
-    @BindView(R.id.news_group)
-    View newsGroup;
     @BindView(R.id.label_location_alert)
-    LinearLayout labelLocationAlert;
+    TextView labelLocationAlert;
     @BindView(R.id.bg_group)
     ViewGroup bgGroup;
     @BindView(R.id.group_location)
@@ -281,8 +279,7 @@ public class WeatherFragment extends BgFragment {
         isVisibleToUser = false;
     }
 
-    @OnClick({R.id.btn_city_add, R.id.btn_back_weather,
-              R.id.label_location_alert, R.id.tv_city_name, R.id.btn_news_type})
+    @OnClick({R.id.btn_city_add,R.id.label_location_alert, R.id.tv_city_name})
     public void onFunctionClick(View v){
         switch (v.getId()){
             case R.id.tv_city_name:
