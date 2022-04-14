@@ -6,7 +6,10 @@ android {
         shl {
             keyAlias 'xs'
             keyPassword 'xs2021'
-            storeFile file('F:/AndroidWorkspace/xs.keystore')
+            def platform = getProperty("platform")
+            def storePath = platform.equals("windows")?getProperty("windowsStoreFile"):getProperty("macStoreFile")
+            //println("platform: "+platform+" , path: "+storePath)
+            storeFile file(storePath)
             storePassword 'xs2021'
         }
     }

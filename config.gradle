@@ -1,6 +1,7 @@
 ext{
 
     modelPath = "F:/AndroidWorkspace/android_common"
-    storeFile = "F:/AndroidWorkspace/xs.keystore"
+    windowsStoreFile = "F:/AndroidWorkspace/xs.keystore"
+    macStoreFile = "/users/yulijun/documents/workspace/xs.keystore"
     versionName = "1.0"
 }

@@ -1,6 +1,10 @@
+def platform = getProperty("platform")
+def commonPath = platform.equals("windows")?getProperty("windowsCommonPath"):getProperty("macCommonPath")
+File common = new File(commonPath);
+//println("platform: "+platform+" , path: "+common)
+include ':app'
 include ':android_common'
-project(':android_common').projectDir = new File('F:/AndroidWorkspace/android_common')
+project(':android_common').projectDir = common
 include ':android_common:commons'
 include ':android_common:bugfix'
 rootProject.name = "MagicWeather"
-include ':app'
