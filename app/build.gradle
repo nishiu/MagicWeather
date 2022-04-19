@@ -7,8 +7,8 @@ android {
             keyAlias 'xs'
             keyPassword 'xs2021'
             def platform = getProperty("platform")
-            def storePath = platform.equals("windows")?getProperty("windowsStoreFile"):getProperty("macStoreFile")
-            //println("platform: "+platform+" , path: "+storePath)
+            def storePath = "windows"==platform?getProperty("windowsStoreFile"):getProperty("macStoreFile")
+            println("platform: "+platform+" , path: "+storePath+",is windows :　"+("windows"==platform))
             storeFile file(storePath)
             storePassword 'xs2021'
         }
